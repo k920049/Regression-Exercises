@@ -1,0 +1,30 @@
+/* 생성된 코드(가져오기) */
+/* 소스 파일: data-prob-5-3.XLS */
+/* 소스 경로: /folders/myfolders/data/Chapter 5/Problems */
+/* 코드 생성일: 18. 10. 20. 오후 6:24 */
+
+%web_drop_table(BOOK.EXERCISE5_3);
+
+LIBNAME BOOK '/folders/myfolders/sasuser.v94/';
+FILENAME REFFILE '/folders/myfolders/data/Chapter 5/Problems/data-prob-5-3.XLS';
+
+PROC IMPORT DATAFILE=REFFILE
+	DBMS=XLS
+	OUT=BOOK.EXERCISE5_3;
+	GETNAMES=YES;
+RUN;
+
+PROC CONTENTS DATA=BOOK.EXERCISE5_3; RUN;
+
+
+%web_open_table(BOOK.EXERCISE5_3);
+
+DATA BOOK.EXERCISE5_3_LOG;
+	SET BOOK.EXERCISE5_3;
+	log_min = log(min);
+RUN;
+
+PROC REG DATA=BOOK.EXERCISE5_3_LOG;
+	MODEL bact = log_min / R LACKFIT;
+RUN;
+

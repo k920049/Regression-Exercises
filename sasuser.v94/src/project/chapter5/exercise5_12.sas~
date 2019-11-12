@@ -1,0 +1,7 @@
+%web_drop_table(BOOK.EXERCISE5_13);
+
+LIBNAME BOOK '/folders/myfolders/sasuser.v94/';
+
+DATA 
+
+%web_open_table(BOOK.EXERCISE5_13);

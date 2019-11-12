@@ -1,0 +1,15 @@
+LIBNAME BOOK '/folders/myfolders/sasuser.v94/';
+
+DATA TEMP;
+	INPUT x2 x7 x8;
+DATALINES;
+2300 56.0 2100
+;
+
+DATA REPORT;
+	SET BOOK.EXERCISE3_1 TEMP;
+RUN;
+
+PROC REG DATA=REPORT;
+	MODEL y = x2 x7 x8 / P CLI;
+RUN;
